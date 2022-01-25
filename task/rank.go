@@ -1,10 +1,17 @@
 package task
 
-import "VideoWeb/model"
+import (
+	"VideoWeb/cache"
+	"VideoWeb/model"
+)
 
 func RestartDailyRank() error {
-	return model.RedisClient.Del("rank:daily").Err()
+	return model.RedisClient.Del(cache.DailyRank).Err()
 }
 func RestartMonthlyRank() error {
-	return model.RedisClient.Del("rank:monthly").Err()
+	return model.RedisClient.Del(cache.MonthlyRank).Err()
+}
+func RestartDailyUpload() error {
+	return model.RedisClient.Del(cache.DailyUpload).Err()
+
 }

@@ -17,23 +17,23 @@ type VideoCreate struct {
 func (s *VideoCreate) Create() serializer.Response {
 	fmt.Println(len(s.Title), len(s.Info))
 	video := model.Video{
-		Title: s.Title,
-		Info:  s.Info,
-		URL:   s.URL,
-		Img:   s.Img,
-		Uid:   s.Uid,
+		Title:  s.Title,
+		Info:   s.Info,
+		URL:    s.URL,
+		Img:    s.Img,
+		Uid:    s.Uid,
+		Status: 0,
 	}
 	if err := model.DB.Create(&video).Error; err != nil {
 		return serializer.Response{
 			Status: 1000,
-			Msg:    "创建视频失败",
+			Msg:    "投递视频失败",
 			Error:  "数据库错误",
 		}
 	}
-	model.DB.First(&video, s.Title)
 	video.AddClick()
 	return serializer.Response{
 		Status: 200,
-		Msg:    "创建成功",
+		Msg:    "投递成功",
 	}
 }

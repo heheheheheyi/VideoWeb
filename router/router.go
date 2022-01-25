@@ -13,7 +13,7 @@ func InitRouter() {
 
 	r := gin.Default()
 
-	r.Use(middleware.Cors())
+	r.Use(middleware.Cors()).Use(middleware.LimitMiddleware())
 
 	router := r.Group("api/v1")
 	{
@@ -31,6 +31,9 @@ func InitRouter() {
 
 		//单个视频
 		router.GET("video/:id", v1.VideoInfo)
+
+		//视频评论列表
+		router.GET("comment/:id", v1.CommentList)
 
 		//日排行榜
 		router.GET("dailyrank", v1.DailyRank)
@@ -69,6 +72,12 @@ func InitRouter() {
 
 		//删除视频
 		authed.DELETE("video/:id", v1.VideoDelete)
+
+		//添加评论
+		authed.POST("comment/:id", v1.CommentCreate)
+
+		//删除评论
+		authed.DELETE("comment/:id", v1.CommentDelete)
 
 		//上传七牛云
 		authed.POST("upload", v1.UpLoad)

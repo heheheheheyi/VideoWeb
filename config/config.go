@@ -23,6 +23,8 @@ var (
 	SecretKey   string
 	Bucket      string
 	QiniuServer string
+
+	CountPerSecond int
 )
 
 func Init() {
@@ -53,4 +55,6 @@ func LoadConfig() {
 	SecretKey = file.Section("QINIU").Key("SecretKey").String()
 	Bucket = file.Section("QINIU").Key("Bucket").String()
 	QiniuServer = file.Section("QINIU").Key("QiniuServer").String()
+
+	CountPerSecond, _ = file.Section("LIMIT").Key("CountPerSecond").Int()
 }

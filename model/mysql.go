@@ -39,5 +39,5 @@ func InitMysql() {
 	Migrate()
 }
 func Migrate() {
-	DB.Set("gorm:table_options", "charset=utf8mb4").AutoMigrate(&User{}).AutoMigrate(&Video{})
+	DB.Set("gorm:table_options", "charset=utf8mb4").AutoMigrate(&User{}).AutoMigrate(&Video{}).AutoMigrate(&Comment{})
 }

@@ -4,15 +4,17 @@ import "VideoWeb/model"
 
 // Video 视频序列化器
 type Video struct {
-	ID        uint   `json:"id"`
-	Title     string `json:"title"`
-	Info      string `json:"info"`
-	URL       string `json:"url"`
-	Img       string `json:"img"`
-	Uid       uint   `json:"uid"`
-	Donor     User   `json:"donor"`
-	Click     int    `json:"click"`
-	CreatedAt string `json:"created_at"`
+	ID        uint    `json:"id"`
+	Title     string  `json:"title"`
+	Info      string  `json:"info"`
+	URL       string  `json:"url"`
+	Img       string  `json:"img"`
+	Uid       uint    `json:"uid"`
+	Status    int     `json:"status"`
+	Donor     User    `json:"donor"`
+	Comment   Comment `json:"comment"`
+	Click     int     `json:"click"`
+	CreatedAt string  `json:"created_at"`
 }
 
 // BuildVideo 序列化视频
@@ -25,6 +27,7 @@ func BuildVideo(video model.Video) Video {
 		URL:       video.URL,
 		Img:       video.Img,
 		Uid:       video.Uid,
+		Status:    video.Status,
 		Donor:     BuildUser(user),
 		Click:     video.GetClick(),
 		CreatedAt: video.CreatedAt.String()[:20],

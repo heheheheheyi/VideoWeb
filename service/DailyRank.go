@@ -18,7 +18,7 @@ func (s *DailyRank) GetRank() serializer.Response {
 
 	if len(ids) > 0 {
 		order := fmt.Sprintf("FIELD(id, %s)", strings.Join(ids, ","))
-		err := model.DB.Where("id in (?)", ids).Order(order).Find(&videos).Error
+		err := model.DB.Where("status = 1 and id in (?)", ids).Order(order).Find(&videos).Error
 		if err != nil {
 			return serializer.Response{
 				Status: 1000,

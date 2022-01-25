@@ -7,7 +7,7 @@ type User struct {
 	ID        uint   `json:"id"`
 	Account   string `json:"account"`
 	Nickname  string `json:"nickname"`
-	Status    uint   `json:"status"`
+	Status    int    `json:"status"`
 	Img       string `json:"img"`
 	CreatedAt string `json:"created_at"`
 }
