@@ -13,7 +13,7 @@ func InitRouter() {
 
 	r := gin.Default()
 
-	r.Use(middleware.Cors()).Use(middleware.LimitMiddleware())
+	r.Use(middleware.Cors()).Use(middleware.Logger()).Use(middleware.LimitMiddleware())
 
 	router := r.Group("api/v1")
 	{

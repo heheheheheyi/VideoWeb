@@ -4,7 +4,6 @@ import (
 	"VideoWeb/cache"
 	"VideoWeb/model"
 	"VideoWeb/serializer"
-	"fmt"
 	"strconv"
 )
 
@@ -14,7 +13,6 @@ type VideoDelete struct {
 func (s *VideoDelete) Delete(id string, uid uint) serializer.Response {
 	var video model.Video
 	err := model.DB.First(&video, id).Error
-	fmt.Println(uid)
 	if err != nil {
 		return serializer.Response{
 			Status: 1000,

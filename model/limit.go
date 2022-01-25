@@ -2,7 +2,6 @@ package model
 
 import (
 	"VideoWeb/config"
-	"fmt"
 	"golang.org/x/time/rate"
 	"sync"
 )
@@ -23,7 +22,6 @@ func SetupIPRateLimiter() error {
 	var r rate.Limit
 	r = 1
 	b := config.CountPerSecond
-	fmt.Println(b)
 	RateLimiter = &IPRateLimiter{
 		ips: make(map[string]*rate.Limiter),
 		mu:  &sync.RWMutex{},

@@ -3,7 +3,6 @@ package service
 import (
 	"VideoWeb/model"
 	"VideoWeb/serializer"
-	"fmt"
 )
 
 type UserUpdate struct {
@@ -27,7 +26,6 @@ func (s *UserUpdate) Update(id uint) serializer.Response {
 	}
 	user.Nickname = s.Nickname
 	user.Img = s.Img
-	fmt.Println(s.Img)
 	err := model.DB.Save(&user).Error
 	if err != nil {
 		return serializer.Response{

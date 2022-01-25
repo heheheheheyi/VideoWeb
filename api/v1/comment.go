@@ -4,7 +4,6 @@ import (
 	"VideoWeb/model"
 	"VideoWeb/serializer"
 	"VideoWeb/service"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -21,7 +20,6 @@ func CommentCreate(c *gin.Context) {
 		})
 	} else {
 		id, _ := c.Get("user_id")
-		fmt.Println(id)
 		user, _ := model.GetUser(id)
 		vid, err := strconv.Atoi(c.Param("id"))
 		if err != nil {

@@ -3,7 +3,6 @@ package service
 import (
 	"VideoWeb/model"
 	"VideoWeb/serializer"
-	"fmt"
 )
 
 type VideoCreate struct {
@@ -15,7 +14,6 @@ type VideoCreate struct {
 }
 
 func (s *VideoCreate) Create() serializer.Response {
-	fmt.Println(len(s.Title), len(s.Info))
 	video := model.Video{
 		Title:  s.Title,
 		Info:   s.Info,

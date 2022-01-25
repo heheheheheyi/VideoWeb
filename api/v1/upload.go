@@ -4,7 +4,6 @@ import (
 	"VideoWeb/cache"
 	"VideoWeb/model"
 	"VideoWeb/serializer"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -23,7 +22,6 @@ func UpLoad(c *gin.Context) {
 	}
 	file, fileHeader, _ := c.Request.FormFile("file")
 	var filesize = fileHeader.Size
-	fmt.Println(filesize)
 	if filesize >= 300000000 {
 		c.JSON(http.StatusOK, serializer.Response{
 			Status: 1000,

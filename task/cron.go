@@ -35,6 +35,5 @@ func CronJob() {
 	Cron.AddFunc("0 0 0 * * *", func() { Run(RestartDailyUpload) })
 	Cron.AddFunc("0 0 0 1 * *", func() { Run(RestartMonthlyRank) })
 	Cron.Start()
-
 	fmt.Println("Cronjob start.....")
 }

@@ -3,7 +3,6 @@ package middleware
 import (
 	"VideoWeb/model"
 	"VideoWeb/serializer"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net"
 	"strings"
@@ -13,8 +12,6 @@ func LimitMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		//得到ip地址
 		ipAddr := GetRealIp(c)
-		fmt.Println("current ip:" + ipAddr)
-		//ipAddr:="127.0.0.1"
 		limiter := model.RateLimiter.GetLimiter(ipAddr)
 		if !limiter.Allow() {
 			c.JSON(200, serializer.Response{
