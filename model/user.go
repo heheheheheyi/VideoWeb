@@ -8,7 +8,7 @@ type User struct {
 	Nickname string
 	Password string
 	Img      string
-	Status   uint
+	Status   int `gorm:"not null;default:0;index:index_status"`
 }
 type UserInfo struct {
 	Id       uint

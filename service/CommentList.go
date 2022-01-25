@@ -6,18 +6,18 @@ import (
 	"fmt"
 )
 
-type VideoList struct {
+type CommentList struct {
 	PageNum      int
 	PageSize     int
 	OrderElement string
 	Desc         int
 }
 
-func (s *VideoList) GetList() serializer.Response {
-	var videos []model.Video
+func (s *CommentList) GetList(id string) serializer.Response {
+	var Comments []model.Comment
 	total := 0
 
-	if err := model.DB.Model(model.Video{}).Where("status = 1").Count(&total).Error; err != nil {
+	if err := model.DB.Model(model.Comment{}).Where("status = 0 and vid = ?", id).Count(&total).Error; err != nil {
 		return serializer.Response{
 			Status: 1000,
 			Msg:    "获取数据失败",
@@ -26,7 +26,7 @@ func (s *VideoList) GetList() serializer.Response {
 	}
 	if s.Desc == 1 {
 		OrderElement := fmt.Sprint(s.OrderElement, " desc")
-		err := model.DB.Where("status = 1").Limit(s.PageSize).Offset((s.PageNum - 1) * s.PageSize).Order(OrderElement).Find(&videos).Error
+		err := model.DB.Where("status = 0 and vid = ?", id).Limit(s.PageSize).Offset((s.PageNum - 1) * s.PageSize).Order(OrderElement).Find(&Comments).Error
 		if err != nil {
 			return serializer.Response{
 				Status: 1000,
@@ -35,7 +35,7 @@ func (s *VideoList) GetList() serializer.Response {
 			}
 		}
 	} else {
-		err := model.DB.Where("status = 1").Limit(s.PageSize).Offset((s.PageNum - 1) * s.PageSize).Order(s.OrderElement).Find(&videos).Error
+		err := model.DB.Where("status = 0 and vid = ?", id).Limit(s.PageSize).Offset((s.PageNum - 1) * s.PageSize).Order(s.OrderElement).Find(&Comments).Error
 		if err != nil {
 			return serializer.Response{
 				Status: 1000,
@@ -44,5 +44,5 @@ func (s *VideoList) GetList() serializer.Response {
 			}
 		}
 	}
-	return serializer.BuildListResponse(serializer.BuildVideos(videos), uint(total))
+	return serializer.BuildListResponse(serializer.BuildComments(Comments), uint(total))
 }

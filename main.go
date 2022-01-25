@@ -11,6 +11,7 @@ func main() {
 	config.Init()
 	model.InitMysql()
 	model.InitRedis()
+	model.SetupIPRateLimiter()
 	task.CronJob()
 	router.InitRouter()
 }

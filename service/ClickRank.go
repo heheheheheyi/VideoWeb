@@ -14,11 +14,11 @@ type ClickRank struct {
 func (s *ClickRank) GetRank() serializer.Response {
 	var videos []model.Video
 
-	ids, _ := model.RedisClient.ZRevRange(cache.MonthlyRank, 0, -1).Result()
+	ids, _ := model.RedisClient.ZRevRange(cache.Clickrank, 0, -1).Result()
 
 	if len(ids) > 0 {
 		order := fmt.Sprintf("FIELD(id, %s)", strings.Join(ids, ","))
-		err := model.DB.Where("id in (?)", ids).Order(order).Find(&videos).Error
+		err := model.DB.Where("status = 1 and id in (?)", ids).Order(order).Find(&videos).Error
 		if err != nil {
 			return serializer.Response{
 				Status: 1000,

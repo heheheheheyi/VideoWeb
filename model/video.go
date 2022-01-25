@@ -9,11 +9,12 @@ import (
 
 type Video struct {
 	gorm.Model
-	Title string
-	Info  string
-	URL   string
-	Uid   uint
-	Img   string
+	Title  string `gorm:"not null"`
+	Info   string `gorm:"not null"`
+	URL    string `gorm:"not null"`
+	Uid    uint   `gorm:"not null"`
+	Img    string `gorm:"not null"`
+	Status int    `gorm:"not null;default:0;index:index_status"`
 }
 
 func ClickKey(id uint) string {
