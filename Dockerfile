@@ -8,6 +8,6 @@ COPY . $GOPATH/src/admin
 
 RUN go build .
 
-EXPOSE 7070
+EXPOSE 9090
 
 ENTRYPOINT ["./VideoWeb"]
