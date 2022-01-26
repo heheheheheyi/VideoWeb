@@ -17,6 +17,12 @@ type Video struct {
 	Status int    `gorm:"not null;default:0;index:index_status"`
 }
 
+func GetVideo(id interface{}) (Video, error) {
+	var video Video
+	res := DB.First(&video, id)
+	return video, res.Error
+}
+
 func ClickKey(id uint) string {
 	return fmt.Sprintf("click:video:%s", strconv.Itoa(int(id)))
 }

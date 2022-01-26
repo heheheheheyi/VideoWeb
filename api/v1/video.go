@@ -80,3 +80,13 @@ func VideoCheckList(c *gin.Context) {
 	var data service.VideoCheckList
 	c.JSON(http.StatusOK, data.GetList())
 }
+
+func VideoCheckPass(c *gin.Context) {
+	var data service.VideoCheckPass
+	c.JSON(http.StatusOK, data.Pass(c.Param("id")))
+}
+
+func VideoCheckBan(c *gin.Context) {
+	var data service.VideoCheckBan
+	c.JSON(http.StatusOK, data.Ban(c.Param("id")))
+}

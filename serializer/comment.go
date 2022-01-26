@@ -8,6 +8,7 @@ type Comment struct {
 	Vid       uint   `json:"vid"`
 	Uid       uint   `json:"uid"`
 	User      User   `json:"donor"`
+	Status    int    `json:"status"`
 	CreatedAt string `json:"created_at"`
 }
 
@@ -20,6 +21,7 @@ func BuildComment(comment model.Comment) Comment {
 		Vid:       comment.Vid,
 		Uid:       comment.Uid,
 		User:      BuildUser(user),
+		Status:    comment.Status,
 		CreatedAt: comment.CreatedAt.String()[:20],
 	}
 }

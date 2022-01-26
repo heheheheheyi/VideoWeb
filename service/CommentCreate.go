@@ -14,10 +14,11 @@ func (s *CommentCreate) Create(vid uint, uid uint) serializer.Response {
 	comment.Uid = uid
 	comment.Vid = vid
 	comment.Info = s.Info
+	comment.Status = 0
 	if err := model.DB.Create(&comment).Error; err != nil {
 		return serializer.Response{
 			Status: 1000,
-			Msg:    "创建视频失败",
+			Msg:    "评论失败",
 			Error:  "数据库错误",
 		}
 	}

@@ -51,3 +51,18 @@ func CommentList(c *gin.Context) {
 	data.OrderElement = c.Query("orderelement")
 	c.JSON(http.StatusOK, data.GetList(c.Param("id")))
 }
+
+func CommentCheckList(c *gin.Context) {
+	var data service.CommentCheckList
+	c.JSON(http.StatusOK, data.GetList())
+}
+
+func CommentCheckPass(c *gin.Context) {
+	var data service.CommentCheckPass
+	c.JSON(http.StatusOK, data.Pass(c.Param("id")))
+}
+
+func CommentCheckBan(c *gin.Context) {
+	var data service.CommentCheckBan
+	c.JSON(http.StatusOK, data.Ban(c.Param("id")))
+}

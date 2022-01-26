@@ -82,6 +82,16 @@ func InitRouter() {
 		//上传七牛云
 		authed.POST("upload", v1.UpLoad)
 	}
+	admin := authed.Group("/")
+	admin.Use(middleware.Admin())
+	{
+		admin.POST("commentcheckpass/:id", v1.CommentCheckPass)
+		admin.POST("commentcheckban/:id", v1.CommentCheckBan)
+		admin.GET("commentchecklist", v1.CommentCheckList)
 
+		admin.POST("videocheckpass/:id", v1.VideoCheckPass)
+		admin.POST("videocheckban/:id", v1.VideoCheckBan)
+		admin.GET("videochecklist", v1.VideoCheckList)
+	}
 	r.Run(config.GinPort)
 }
