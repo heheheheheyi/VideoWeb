@@ -19,9 +19,8 @@ var (
 
 // 创建一个RateLimiter
 func SetupIPRateLimiter() error {
-	var r rate.Limit
-	r = 1
-	b := config.CountPerSecond
+	r := rate.Limit(config.RateLimit)
+	b := config.RateBurst
 	RateLimiter = &IPRateLimiter{
 		ips: make(map[string]*rate.Limiter),
 		mu:  &sync.RWMutex{},
@@ -35,7 +34,6 @@ func SetupIPRateLimiter() error {
 func (i *IPRateLimiter) AddIP(ip string) *rate.Limiter {
 	i.mu.Lock()
 	defer i.mu.Unlock()
-
 	limiter := rate.NewLimiter(i.r, i.b)
 	i.ips[ip] = limiter
 	return limiter

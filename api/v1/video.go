@@ -10,8 +10,8 @@ import (
 )
 
 func VideoCreate(c *gin.Context) {
-	var s service.VideoCreate
-	if err := c.ShouldBind(&s); err != nil {
+	var data service.VideoCreate
+	if err := c.ShouldBind(&data); err != nil {
 		c.JSON(http.StatusOK, &serializer.Response{
 			Status: 1000,
 			Msg:    "数据格式错误",
@@ -27,8 +27,8 @@ func VideoCreate(c *gin.Context) {
 				Error:  "jwt错误",
 			})
 		} else {
-			s.Uid = user.ID
-			res := s.Create()
+			data.Uid = user.ID
+			res := data.Create()
 			c.JSON(http.StatusOK, res)
 		}
 	}
@@ -50,10 +50,10 @@ func VideoUpdate(c *gin.Context) {
 	}
 }
 func VideoDelete(c *gin.Context) {
-	service := service.VideoDelete{}
+	data := service.VideoDelete{}
 	id, _ := c.Get("user_id")
 	user, _ := model.GetUser(id)
-	res := service.Delete(c.Param("id"), user.ID)
+	res := data.Delete(c.Param("id"), user.ID)
 	c.JSON(http.StatusOK, res)
 }
 func VideoList(c *gin.Context) {
@@ -66,13 +66,17 @@ func VideoList(c *gin.Context) {
 }
 
 func UserVideoList(c *gin.Context) {
-	var s service.UserVideoList
-	s.Uid, _ = strconv.Atoi(c.Param("uid"))
-	c.JSON(http.StatusOK, s.GetList())
+	var data service.UserVideoList
+	data.Uid, _ = strconv.Atoi(c.Param("uid"))
+	c.JSON(http.StatusOK, data.GetList())
 }
 func VideoInfo(c *gin.Context) {
-	var s service.VideoInfo
-	res := s.GetInfo(c.Param("id"))
+	var data service.VideoInfo
+	res := data.GetInfo(c.Param("id"))
 	c.JSON(http.StatusOK, res)
+}
 
+func VideoCheckList(c *gin.Context) {
+	var data service.VideoCheckList
+	c.JSON(http.StatusOK, data.GetList())
 }

@@ -19,7 +19,7 @@ func InitMysql() {
 			config.MysqlADDR,
 			config.MysqlDB,
 		))
-	db.LogMode(true)
+	db.LogMode(false)
 	if err != nil {
 		fmt.Println("error mysql")
 		panic(err)

@@ -24,7 +24,8 @@ var (
 	Bucket      string
 	QiniuServer string
 
-	CountPerSecond int
+	RateLimit int
+	RateBurst int
 )
 
 func Init() {
@@ -56,5 +57,6 @@ func LoadConfig() {
 	Bucket = file.Section("QINIU").Key("Bucket").String()
 	QiniuServer = file.Section("QINIU").Key("QiniuServer").String()
 
-	CountPerSecond, _ = file.Section("LIMIT").Key("CountPerSecond").Int()
+	RateLimit, _ = file.Section("LIMIT").Key("RateLimit").Int()
+	RateBurst, _ = file.Section("LIMIT").Key("RateBurst").Int()
 }

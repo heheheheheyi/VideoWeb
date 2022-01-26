@@ -117,17 +117,8 @@ func PasswordUpdate(c *gin.Context) {
 }
 
 func UserInfo(c *gin.Context) {
-	var s service.UserInfo
+	var data service.UserInfo
 	id := c.Param("id")
-	res := s.GetUserInfo(id)
+	res := data.GetUserInfo(id)
 	c.JSON(http.StatusOK, res)
-}
-
-// CurrentUser 获取个人信息
-func CurrentUser(c *gin.Context) model.User {
-	if user, _ := c.Get("user"); user != nil {
-		return user.(model.User)
-	} else {
-		return model.User{}
-	}
 }
