@@ -90,3 +90,13 @@ func VideoCheckBan(c *gin.Context) {
 	var data service.VideoCheckBan
 	c.JSON(http.StatusOK, data.Ban(c.Param("id")))
 }
+
+func VideoAdminList(c *gin.Context) {
+	var s service.VideoAdminList
+	c.JSON(http.StatusOK, s.GetList())
+}
+func VideoAdminDelete(c *gin.Context) {
+	data := service.VideoAdminDelete{}
+	res := data.Delete(c.Param("id"))
+	c.JSON(http.StatusOK, res)
+}

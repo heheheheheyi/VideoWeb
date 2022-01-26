@@ -5,23 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f580e57a-c3da-4ac5-b1e6-d2a474fe1807" name="变更" comment="Video后端">
-      <change afterPath="$PROJECT_DIR$/middleware/admin.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/CommentCheckBan.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/CommentCheckList.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/CommentCheckPass.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/VideoCheckBan.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/VideoCheckPass.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/CommentAdminDelete.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/CommentAdminList.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/VideoAdminDelete.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/VideoAdminList.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/v1/comment.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/comment.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/v1/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/v1/video.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/log.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/log.log20220126.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/log.log20220126.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/video.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/video.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/router/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serializer/comment.go" beforeDir="false" afterPath="$PROJECT_DIR$/serializer/comment.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/CommentCreate.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/CommentCreate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/CommentList.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/CommentList.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/VideoInfo.go" beforeDir="false" afterPath="$PROJECT_DIR$/service/VideoInfo.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +55,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../video" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/service" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">

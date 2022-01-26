@@ -92,6 +92,12 @@ func InitRouter() {
 		admin.POST("videocheckpass/:id", v1.VideoCheckPass)
 		admin.POST("videocheckban/:id", v1.VideoCheckBan)
 		admin.GET("videochecklist", v1.VideoCheckList)
+
+		admin.GET("videoadmin", v1.VideoAdminList)
+		admin.DELETE("videoadmin/:id", v1.VideoAdminDelete)
+
+		admin.GET("commentadmin", v1.CommentAdminList)
+		admin.DELETE("commentadmin/:id", v1.CommentAdminDelete)
 	}
 	r.Run(config.GinPort)
 }

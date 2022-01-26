@@ -66,3 +66,12 @@ func CommentCheckBan(c *gin.Context) {
 	var data service.CommentCheckBan
 	c.JSON(http.StatusOK, data.Ban(c.Param("id")))
 }
+func CommentAdminList(c *gin.Context) {
+	var s service.CommentAdminList
+	c.JSON(http.StatusOK, s.GetList())
+}
+func CommentAdminDelete(c *gin.Context) {
+	data := service.CommentAdminDelete{}
+	res := data.Delete(c.Param("id"))
+	c.JSON(http.StatusOK, res)
+}

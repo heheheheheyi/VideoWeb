@@ -18,6 +18,8 @@ func (s *VideoInfo) GetInfo(id string) serializer.Response {
 			Error:  err.Error(),
 		}
 	}
-	video.AddClick()
+	if video.Status == 1 {
+		video.AddClick()
+	}
 	return serializer.BuildResponse(serializer.BuildVideo(video))
 }
